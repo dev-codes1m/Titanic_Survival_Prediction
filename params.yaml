@@ -1,0 +1,38 @@
+base: 
+  project: mlops-insurance
+  random_state: 42
+  target_col: Survived
+
+data_source:
+  s3_source: source_code/Titanic_survival.csv
+
+load_data:
+  raw_dataset_csv: data/raw/Titanic_survival.csv
+
+split_data:
+  train_path: data/processed/train_titanic_survival.csv
+  test_path: data/processed/test_titanic_survival.csv
+  test_size: 0.2
+
+estimators:
+  XGBClassifier:   # Pleases Try with different models as well.This is just for reference purpose
+    params:
+      booster: gbtree
+      max_depth: 2
+
+model_dir: models
+
+reports:
+  params: reports/params.json
+  scores: reports/scores.json
+
+webapp_model_dir: prediction_service/model/model.joblib
+
+mlflow_config:
+  artifacts_dir: artifacts
+  experiment_name: Titanic_Survival_Prediction
+  run_name: mlops
+  registered_model_name: Titanic_Survival_Prediction
+  remote_server_uri: http://127.0.0.1:5000/
+
+

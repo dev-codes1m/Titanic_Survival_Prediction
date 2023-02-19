@@ -1,0 +1,3 @@
+#!D:\Course5i MLops Practice Project\Titanic Dashboard\Titanic Dashboard\.virtualenv\Titanic\Scripts\python.exe
+from numba.pycc import main
+main()
