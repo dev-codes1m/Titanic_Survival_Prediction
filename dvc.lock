@@ -1,0 +1,34 @@
+schema: '2.0'
+stages:
+  load_data:
+    cmd: python src/load_data.py --config=params.yaml
+    deps:
+    - path: source_code/Titanic_survival.csv
+      md5: c2e687c040103d54f049836b7d5fdd72
+      size: 31280
+    - path: src/get_data.py
+      md5: 5f0dfd76d5dafaaeea82d5b85250e720
+      size: 696
+    - path: src/load_data.py
+      md5: 7b76f758cefa5250998bba79149e740d
+      size: 694
+    outs:
+    - path: data/raw/Titanic_survival.csv
+      md5: af77fe2a6163f55fca8586276915f4e8
+      size: 31280
+  split_data:
+    cmd: python src/split_data.py --config=params.yaml
+    deps:
+    - path: data/raw/Titanic_survival.csv
+      md5: af77fe2a6163f55fca8586276915f4e8
+      size: 31280
+    - path: src/split_data.py
+      md5: 568035c0ed54171ed2bae7437e145db4
+      size: 1080
+    outs:
+    - path: data/processed/test_titanic_survival.csv
+      md5: 7db15ddd9ad4abdced8adcdd6087d468
+      size: 6569
+    - path: data/processed/train_titanic_survival.csv
+      md5: 8e391561601aabacf760ff8a8f19bfab
+      size: 24800

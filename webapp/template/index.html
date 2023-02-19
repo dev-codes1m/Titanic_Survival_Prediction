@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Medical Expenses</title>
+<style>
+    .button{ 
+        border:none;
+        color:white;
+        padding:10px 20px;
+        text-align:center;
+        text-decoration:none;
+        display:inline-block;
+        font-size:14px;
+        margin:4px 2px;
+        cursor:pointer;
+    }
+    .button1{background-color: #4caf50;}
+    .button2{background-color: #008cba;}
+</style>
+</head>
+<body style="background-color:rgb(187, 187, 187)">
+
+<center><h1><span style="color:#FF0000">Titanic Survival Prediction</span></h1>
+    <center><h3>Please Enter the Data</h3></center> <br>
+
+    <form action="{% url 'result' %}">
+        {% csrf_token %}
+
+        <table align="center">
+            
+            <tr><td>Pclass:<td><input type="text" required name="Pclass"></td></tr>
+            <tr><td>Sex:<td><input type="text" required name="Sex"></td></tr>
+            <tr><td>Age:<td><input type="text" required name="Age"></td></tr>
+            <tr><td>SibSp:<td><input type="text" required name="SibSp"></td></tr>
+            <tr><td>Parch:<td><input type="text" required name="Parch"></td></tr>
+            <tr><td>Fare:<td><input type="text" required name="Fare"></td></tr>
+            <tr><td>Embarked:<td><input type="text" required name="Embarked"></td></tr>
+            <tr><td>Fare_Tax:<td><input type="text" required name="Fare_Tax"></td></tr>
+            <tr><td>Food_Charges:<td><input type="text" required name="Food_Charges"></td></tr>
+            <tr><td>Luggage_Charges:<td><input type="text" required name="Luggage_Charges"></td></tr>
+
+        </table>
+
+        <center><button type="submit" name="" value="submit" class="button button1">Submit</button></center>
+        <center><button type="reset" name="" value="reset" class="button button1">Reset</button></center>
+    </form>
+
+    {% if answer == 1 %}
+
+    <center><h2 style="color:#FF6600">The Person wasn't Survived</h2>
+    <h3 style="color:#009900">Thanks for using Titanic Survival Prediction App</h3></h2>
+    </center>
+    {% elif answer == 0 %}
+
+    <center><h2 style="color:#FF6600">The Person was Survived</h2>
+        <h3 style="color:#009900">Thanks for using Titanic Survival Prediction App</h3></h2>
+    </center>
+
+    {% endif %}
+
+</center>
+</body>
+</html>
